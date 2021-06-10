@@ -28,11 +28,11 @@ include 'script/koneksi.php';
           </div>
           <div class="sosmed flex">
             <span class="icon"><img src="dist/icon/instagram.png" alt=""></span>
-            <a href="<?php echo $row['instagram']; ?>" class="link-sosmed"><?php echo $row['instagram']; ?></a>
+            <a href="https://www.instagram.com/<?php echo $row['instagram']; ?>" class="link-sosmed"><?php echo $row['instagram']; ?></a>
           </div>
           <div class="sosmed flex">
             <span class="icon"><img src="dist/icon/wa-ori.png" alt=""></span>
-            <a href="<?php echo $row['whatsapp']; ?>" class="link-sosmed"><?php echo $row['whatsapp']; ?></a>
+            <a href="https://wa.me/<?php echo $row['whatsapp']; ?>" class="link-sosmed"><?php echo $row['whatsapp']; ?></a>
           </div>
         </div>
       </div>

@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="../dist/css/main.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-  <title> Cup KAA - Online Coffee Shop </title>
+  <title> Cup KAA - Online Kopi Abah Ambu Shop </title>
 </head>
 
 <body>
