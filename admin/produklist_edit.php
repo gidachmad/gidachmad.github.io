@@ -19,7 +19,7 @@ require_once "../view/header_admin.php";
         <label for="img">Select image:</label>
         <input type="file" id="img" name="img" accept="image/*">
       </div>
-      <input type="button" value="Tambah Produk" class="link" >
+      <input type="button" value="Tambah Produk" class="link">
 
     </form>
   </div>

@@ -29,12 +29,33 @@ img {
 .link {
   color: white;
   background-color: #714f38;
-  padding: 15px 30px;
+  padding: 1rem 1.5rem;
   border-radius: 10px;
 }
 
 .link:hover {
   background-color: #a35c29;
+}
+
+.link-dash {
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.link-dash .list {
+  color: white;
+  background-color: #714f38;
+  margin: 0.5rem;
+  padding: 1rem 0;
+  border-radius: 10px;
+}
+
+p {
+  line-height: 1.65;
 }
 
 .background {
@@ -53,11 +74,31 @@ img {
 
 .background .container {
   background-color: rgba(230, 214, 204, 0.6);
-  padding: 2rem;
-  margin: 4% 20%;
-  margin-right: 30%;
+  padding: 1.5rem;
+  width: 55%;
+  margin: auto;
+  margin-top: 3rem;
 }
 
-.background .container a {
-  margin: 1rem;
+.background .container h1 {
+  font-weight: lighter;
+}
+
+@media only screen and (max-width: 768px) {
+  .background .container {
+    width: 75%;
+    margin-top: 2rem;
+  }
+}
+
+@media only screen and (max-width: 360px) {
+  .link-dash {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
 }

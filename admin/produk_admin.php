@@ -1,79 +1,71 @@
 <?php
 require_once "../view/header_admin.php";
+include '../script/koneksi.php';
+session_start();
+if (isset($_COOKIE["login"])) {
+  if ($_COOKIE["login" == "true"]) {
+    $_SESSION["login"] = true;
+  }
+}
+if (!isset($_SESSION["login"])) {
+  echo "<script>alert('Halaman tidak bisa diakses :)')
+	document.location.href='index.php';
+	</script>";
+  die;
+}
 ?>
 
 <div class="main-container">
-    <div class="flex main">
-      <div class="product" style="flex-basis:40%;">
-        <img src="../dist/img/coffee-mugs-1727056_1920.jpg" alt="" class="thumbnail">
+  <?php
+  $id = $_GET['idproduk'];
+  $ambildata = mysqli_query($conn, "SELECT * FROM produk WHERE idproduk='$id'");
+  while ($row = mysqli_fetch_array($ambildata)) {
+  ?>
+    <div class="flex main admin">
+      <div class="product">
+        <img src="../dist/img/gambar_produk/<?php echo $row['gambar']; ?>" alt="" class="thumbnail">
       </div>
-      <div class="desc card " style="flex-basis:50%;">
-        <h2> Nama Produk </h2>
+      <div class="desc card">
+        <h2> <?php echo $row['namaproduk']; ?></h2>
         <h3>Komposisi</h3>
         <ul>
-          <li> Jenis </li>
-          <li> Rasa </li>
-          <li> Unikan </li>
+          <li> <?php echo $row['komposisi']; ?> </li>
         </ul>
         <h3>Deskripsi</h3>
-        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quos molestias voluptates omnis repudiandae illum cum debitis quia, praesentium autem, saepe aliquid alias accusantium repellat. Dicta aut quas architecto voluptatibus distinctio!</p>
+        <p><?php echo $row['deskripsi']; ?></p>
         <br>
-        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque fugit harum tempore temporibus, autem aut odit architecto deleniti sunt fugiat aperiam totam repellendus dolorum perferendis modi minus adipisci eveniet corrupti!</p>
+        <h3><?php echo rupiah($row['harga']); ?></h3>
         <br>
-        <h3>Harga : Rp. 15.000</h3>
-        <br>
-        <a href="produk_edit.php" class="link" style="text-align:center;"> Edit </a>
+        <a href="produk_edit.php?idproduk=<?php echo $row['idproduk']; ?>" class="link" style="text-align:center;"> Edit </a>
 
       </div>
-    
-      <!-- <div class="cart card flex">
-        <h2>Keranjang</h2>
-        <table>
-          <tr class="table">
-            <th>No</th>
-            <th>Produk</th>
-            <th>Jumlah</th>
-            <th>Harga</th>
-          </tr>
-          <tr class="table">
-            <td>1.</td>
-            <td>Kopi es teh anget</td>
-            <td>1</td>
-            <td>Rp 15.000</td>
-          </tr>
-        </table>
-        <br>
-        <h3>Jumlah : Rp 15.000</h3><br>
-        <a href="konfirmasi.php" class="link"> Konfirmasi Pembelian </a>
-      </div> -->
-    
     </div>
+  <?php } ?>
+  <div class="review">
+    <h1>Ulasan</h1>
 
-    <div class="review">
-      <h1>Review</h1>
-
-      <div class="flex review-container">
-        <div class="card">
-          <h2>Review 1</h2>
-          <p>tanggal</p><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, atque architecto. Est illo officia porro, hic cumque sit. Illum, inventore nam totam mollitia iusto reprehenderit voluptates. Numquam ipsam sint perferendis.</p>
-        </div>
-        <div class="card">
-          <h2>Review 1</h2>
-          <p>tanggal</p><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, atque architecto. Est illo officia porro, hic cumque sit. Illum, inventore nam totam mollitia iusto reprehenderit voluptates. Numquam ipsam sint perferendis.</p>
-        </div>
-        <div class="card">
-          <h2>Review 1</h2>
-          <p>tanggal</p><br>
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, atque architecto. Est illo officia porro, hic cumque sit. Illum, inventore nam totam mollitia iusto reprehenderit voluptates. Numquam ipsam sint perferendis.</p>
-        </div>
-        <a href="" class="link"> Tambah Review </a>
-      </div>
-
-
+    <div class="flex review-container">
+      <?php
+      $idproduk = $_GET['idproduk'];
+      $query = "SELECT * FROM review_produk WHERE idproduk = '$idproduk'";
+      $hasil = mysqli_query($conn, $query);
+      if (mysqli_num_rows($hasil) > 0) {
+        while ($data = mysqli_fetch_array($hasil)) {
+      ?>
+          <div class="card card-review">
+            <h2><?php echo $data['namareview']; ?></h2>
+            <p><?php echo $data['tgl']; ?></p><br>
+            <p><?php echo $data['rating']; ?></p>
+            <p><?php echo $data['deskripsireview']; ?></p>
+          </div>
+        <?php }
+      } elseif (mysqli_num_rows($hasil) == 0) {
+        ?>
+        <h2>Belum ada ulasan</h2><br>
+      <?php } ?>
     </div>
   </div>
+</div>
 
 
 <?php
