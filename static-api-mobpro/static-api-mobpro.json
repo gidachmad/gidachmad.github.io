@@ -1,4 +1,4 @@
 [
-    {"gambar": "sukses"},
-    {"gambar": "loading"}
+    {"name": "sukses", "gambar": "sukses"},
+    {"name": "loading", "gambar": "loading"}
 ]
