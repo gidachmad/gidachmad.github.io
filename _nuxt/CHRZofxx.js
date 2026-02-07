@@ -1,0 +1,1 @@
+import{_ as o}from"./DlAUqK2U.js";import{c as s,o as a,a as e}from"./CwIDCfTp.js";const n={};function r(c,t){return a(),s("div",null,[...t[0]||(t[0]=[e("section",{class:"flex flex-col gap-4 items-center mt-4"},[e("h1",null,"pages 2"),e("p",null,"Lorem ipsum, dolor sit amet consectetur adipisicing elit. Magnam quo ")],-1)])])}const m=o(n,[["render",r]]);export{m as default};
